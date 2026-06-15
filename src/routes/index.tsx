@@ -19,8 +19,7 @@ function Home() {
           <UserButton />
         </Show>
         <Show when="signed-out">
-          <SignInButton />
-          <SignUpButton />
+          <SignInButton mode="modal">Connect</SignInButton>
         </Show>
       </div>
     </div>
