@@ -13,7 +13,7 @@ const SearchSchema = z.object({
   callback_url: z.string().url(),
 })
 
-const encrypt = (user: z.infer<typeof User>) => {
+const encrypt = (user) => {
   return privateEncrypt(
     {
       key: process.env.PRIVATE_KEY!,
