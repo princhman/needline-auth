@@ -1,11 +1,28 @@
+import {
+  UserButton,
+  Show,
+  SignInButton,
+  SignUpButton,
+} from '@clerk/tanstack-react-start'
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/')({ component: App })
+export const Route = createFileRoute('/')({
+  component: Home,
+})
 
-function App() {
+function Home() {
   return (
-    <main className="page-wrap px-4 pb-8 pt-14">
-      <p>hello</p>
-    </main>
+    <div className="flex w-full min-h-screen items-center justify-center">
+      <div className="flex gap-3 items-center">
+        <span className="text-3xl">Needline demo auth</span>
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
+        <Show when="signed-out">
+          <SignInButton />
+          <SignUpButton />
+        </Show>
+      </div>
+    </div>
   )
 }

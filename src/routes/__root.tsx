@@ -1,10 +1,7 @@
+import { ClerkProvider } from '@clerk/tanstack-react-start'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-
-import ClerkProvider from '../integrations/clerk/provider'
-
-import appCss from '../styles.css?url'
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+import '../styles.css'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -17,40 +14,23 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
-      },
-    ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
+        title: 'Needline demo auth',
       },
     ],
   }),
+
   shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
-      <body className="font-sans antialiased [overflow-wrap:anywhere] selection:bg-[rgba(79,184,178,0.24)]">
-        <ClerkProvider>
-          {children}
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-            ]}
-          />
-        </ClerkProvider>
+      <body>
+        <ClerkProvider>{children}</ClerkProvider>
+        <TanStackRouterDevtools />
         <Scripts />
       </body>
     </html>
